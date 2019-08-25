@@ -1,0 +1,50 @@
+<div class="profile-container">
+    <h3 class="profile-name"><%= @user.name %></h3>
+    <h4 class="introduction"><%= @user.introduction %></h4>
+    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+	<% if @user.id == current_user.id %>
+        <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "pull-right" %></p>
+    <% end %>
+</div>
+
+
+<h1>Users</h1>
+
+ <table>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+            <td> <%= attachment_image_tag @user, :profile_image, :fill, 30, 30, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></td>
+            <td><%=user.name %></td>
+            <td><%= link_to "Show", user_path(user.id) %></td>
+
+
+    </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+
+
+
+<h1>New book</h1>
+
+<%= form_for(Book.new, url: '/books') do |f| %>
+
+    <h4>Title</h4>
+    <%= f.text_field :title %>
+
+    <h4>Opinion</h4>
+    <%= f.text_area :body %>
+
+    <%= f.submit 'Create Book' %>
+
+<% end %>

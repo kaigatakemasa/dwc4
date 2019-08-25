@@ -1,0 +1,15 @@
+<% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <h1>welcome to Bookers !!</h1>
+    <h4>you can share and exchange your opinions , inpressions , and emotions<rb>
+
+about varioius books!</h4>
+
+<div>
+<%= link_to 'sign up', new_user_registration_path %>
+<%= link_to 'login', new_user_session_path %>
+</div>
